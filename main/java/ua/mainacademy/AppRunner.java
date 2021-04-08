@@ -13,14 +13,19 @@ public class AppRunner {
 	public static void main(String[] args) {
 		String text = "Charlie Jennifer Charlie Bob Charlie Charlie Bob Jennifer Alice Alice";
 		
-		//Arrays.stream(text.split(" "))
-		
 		List<String> list = Arrays.asList(text.split(" "));
-		LOG.info(String.format("Full list is: %s", list));
-		//my personal easier task for practise
+		LOG.info(String.format("Full list: %s", list));
+		
+		//my personal easier task for practise #1
 		List<String> sorted = list.stream().filter(s -> !s.equals("Jennifer")).collect(Collectors.toList());
 		LOG.info(String.format("Result without Jennifer: %s", sorted));
-		//home task #7
+		
+		//my personal easier task for practise #2
+		List<String> sorted2 = list.stream()
+				.sorted().collect(Collectors.toList());
+		LOG.info(String.format("Result sorted by names: %s", sorted2));
+		
+		//result for home task
 		LOG.info("Result for home task #7: ");
 		list.stream()
 				.collect(Collectors.groupingBy(s -> s, Collectors.counting()))
